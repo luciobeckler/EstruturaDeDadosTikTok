@@ -19,7 +19,6 @@ public class LeitorDeArquivo {
       while ((linha = buffer.readLine()) != null) {
         criaObjetosVideo(linha);
       }
-      System.err.println(listaVideos.size());
       buffer.close();
     } catch (Exception e) {
       System.err.println(e);
@@ -38,11 +37,9 @@ public class LeitorDeArquivo {
     while (!isVerifiedStatusTrue(linhaArray.get(4))) {
       if (linhaArray.size() > 5) {
         linhaArray.set(4, linhaArray.get(4) + ", " + linhaArray.get(5));
-        linhaArray.remove(5);
+        linhaArray.remove(4);
       }
     }
-
-    System.out.println(linhaArray);
 
     listaVideos.add(new Video(
         linhaArray.get(0),
@@ -56,5 +53,13 @@ public class LeitorDeArquivo {
         Integer.parseInt(linhaArray.get(8)),
         Integer.parseInt(linhaArray.get(9)),
         Integer.parseInt(linhaArray.get(10))));
+  }
+
+  public ArrayList<Video> getListaVideos() {
+    return listaVideos;
+  }
+
+  public void setListaVideos(ArrayList<Video> listaVideos) {
+    this.listaVideos = listaVideos;
   }
 }

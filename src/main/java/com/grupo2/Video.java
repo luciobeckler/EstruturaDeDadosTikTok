@@ -38,6 +38,22 @@ public class Video {
         this.videoCommentCount = videoCommentCount;
     }
 
+    public String printVideoAtributos() {
+        return "Video{" +
+                "claimStatus='" + claimStatus + '\'' +
+                ", videoId=" + videoId +
+                ", videoDurationSec=" + videoDurationSec +
+                ", videoTranscriptionText='" + videoTranscriptionText + '\'' +
+                ", verifiedStatus='" + verifiedStatus + '\'' +
+                ", authorBanStatus='" + authorBanStatus + '\'' +
+                ", videoViewCount=" + videoViewCount +
+                ", videoLikeCount=" + videoLikeCount +
+                ", videoShareCount=" + videoShareCount +
+                ", videoDownloadCount=" + videoDownloadCount +
+                ", videoCommentCount=" + videoCommentCount +
+                '}';
+    }
+
     public String getClaimStatus() {
         return claimStatus;
     }
