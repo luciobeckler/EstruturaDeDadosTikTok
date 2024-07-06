@@ -8,16 +8,15 @@ import java.util.List;
 
 public class LeitorDeArquivo {
 
-  private List<String> linhaArray;
-  private ArrayList<Video> listaVideos = new ArrayList<Video>();
+  private static List<String> linhaArray;
 
-  public LeitorDeArquivo(String caminhoData) {
+  public static void leArquivoEgeraListaDeVideos(String caminhoData) {
 
     try {
       BufferedReader buffer = new BufferedReader(new FileReader(caminhoData));
       String linha = buffer.readLine();
       while ((linha = buffer.readLine()) != null) {
-        criaObjetosVideo(linha);
+        Video.addVideoEmListaVideos(criaObjetosVideo(linha));
       }
       buffer.close();
     } catch (Exception e) {
@@ -25,11 +24,11 @@ public class LeitorDeArquivo {
     }
   }
 
-  private boolean isVerifiedStatusTrue(String valor) {
+  private static boolean isVerifiedStatusTrue(String valor) {
     return (valor.equals("verified") || valor.equals("not verified"));
   }
 
-  private void criaObjetosVideo(String linha) {
+  private static Video criaObjetosVideo(String linha) {
     linhaArray = new ArrayList<>(Arrays.asList(linha.split(",")));
 
     linhaArray.remove(0);
@@ -40,8 +39,7 @@ public class LeitorDeArquivo {
         linhaArray.remove(4);
       }
     }
-
-    listaVideos.add(new Video(
+    return new Video(
         linhaArray.get(0),
         Long.parseLong(linhaArray.get(1)),
         Integer.parseInt(linhaArray.get(2)),
@@ -52,14 +50,6 @@ public class LeitorDeArquivo {
         Integer.parseInt(linhaArray.get(7)),
         Integer.parseInt(linhaArray.get(8)),
         Integer.parseInt(linhaArray.get(9)),
-        Integer.parseInt(linhaArray.get(10))));
-  }
-
-  public ArrayList<Video> getListaVideos() {
-    return listaVideos;
-  }
-
-  public void setListaVideos(ArrayList<Video> listaVideos) {
-    this.listaVideos = listaVideos;
+        Integer.parseInt(linhaArray.get(10)));
   }
 }

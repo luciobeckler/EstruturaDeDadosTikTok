@@ -1,5 +1,7 @@
 package com.grupo2;
 
+import java.util.ArrayList;
+
 public class Video {
     private String claimStatus;
     private long videoId;
@@ -12,6 +14,8 @@ public class Video {
     private int videoShareCount;
     private int videoDownloadCount;
     private int videoCommentCount;
+
+    private static ArrayList<Video> listaVideos = new ArrayList<Video>();
 
     public Video(
             String claimStatus,
@@ -36,6 +40,14 @@ public class Video {
         this.videoShareCount = videoShareCount;
         this.videoDownloadCount = videoDownloadCount;
         this.videoCommentCount = videoCommentCount;
+    }
+
+    public static ArrayList<Video> getListaVideos() {
+        return listaVideos;
+    }
+
+    public static void addVideoEmListaVideos(Video video) {
+        Video.listaVideos.add(video);
     }
 
     public String printVideoAtributos() {
